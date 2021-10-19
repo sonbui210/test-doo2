@@ -12,8 +12,12 @@ class LibraryBook(models.Model):
     _name = 'library.book'
     _description = 'Library Book'
 
+
+    short_name = fields.Char("Short name")
     name = fields.Char('Title', required=True)
     date_release = fields.Date('Release Date')
+    date_updated = fields.Date("Date Updated")
+    notes = fields.Text("Notes")
     author_ids = fields.Many2many('res.partner', string='Authors')
     category_id = fields.Many2one('library.book.category', string='Category')
 
@@ -33,6 +37,23 @@ class LibraryBook(models.Model):
     pages = fields.Integer("Number Of Pages")
 
     cost_price = fields.Float("Book Cost")
+
+    cover = fields.Binary("Book Cover")
+
+    out_of_print = fields.Boolean("Out Of Print?")
+
+    reader_rating = fields.Float(
+        "Reader Avarage Rating",
+        digits=(14,4),
+    )
+
+    currency_id = fields.Many2one("res.currency", string="Currency")
+    retail_price = fields.Monetary("Retail Price")
+
+    publisher_id = fields.Many2one("res.partner", string="Publisher",
+                                   ondelete="set null",
+                                   context={},
+                                   domain=[],)
 
 
     @api.model
@@ -204,3 +225,14 @@ class LibraryMember(models.Model):
     date_end = fields.Date('Termination Date')
     member_number = fields.Char()
     date_of_birth = fields.Date('Date of birth')
+
+
+class ResPartner(models.Model):
+
+    _inherit = "res.partner"
+
+    published_book_ids = fields.One2many("library.book", "publisher_id", string="Published Books")
+    authored_book_ids = fields.Many2many(
+        "library.book",
+        string="Authored Books",
+    )

@@ -36,8 +36,18 @@
                         <field name="author_ids" widget="many2many_tags"/>
                         <field name="manager_remarks"   />
                         <field name="cost_price" />
+                        <field name="state"/>
+                        <field name="pages"/>
+                        <field name="notes"/>
+                        <field name="retail_price"/>
+                        <field name="currency_id"/>
                     </group>
                     <group>
+                        <field name="short_name"/>
+                        <field name="publisher_id"/>
+                        <field name="date_updated"/>
+                        <field name="cover" widget="image" class="oe_avatar"/>
+                        <field name="reader_rating"/>
                         <field name="category_id"/>
                         <field name="date_release"/>
                         <field name="old_edition" />
