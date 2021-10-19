@@ -26,6 +26,28 @@ class LibraryBook(models.Model):
 
     manager_remarks = fields.Text("Manager remarks")
 
+    isbn = fields.Char("ISBN")
+
+    old_edition = fields.Many2one("library.book", string="Ole Edition")
+
+    def name_get(self):
+        result = []
+        for book in self:
+            authors = book.author_ids.mapped("name")
+            name = "%s (%s)" % (book.name, ", ".join(authors))
+            result.append((book.id, name))
+            return result
+    
+    @api.model
+    def _name_search(self, name='', args=None, operator='ilike', limit=100, name_get_uid=None):
+        args = [] if args is None else args.copy()
+        if not(name == "" and operator == "ilike"):
+            args += ["|", "|",
+                     ("name", operator, name),
+                     ("isbn", operator, name),
+                     ("author_ids.name", operator, name)]
+        return super(LibraryBook, self)._name_search(name=name, args=args, operator=operator, limit=limit, name_get_uid=name_get_uid)
+
     @api.model
     def is_allowed_transition(self, old_state, new_state):
         allowed = [('draft', 'available'),
@@ -134,7 +156,7 @@ class LibraryBook(models.Model):
     
     @api.model
     def create(self, values):
-        if not self.user_has_groups("my_library.acl_book_librarian"):
+        if self.user_has_groups("my_library.acl_book_librarian"):
             if 'manager_remarks' in values:
                 raise UserError(
                     "You are not allowed to modify "
@@ -143,7 +165,7 @@ class LibraryBook(models.Model):
         return super(LibraryBook, self).create(values)
     
     def write(self, values):
-        if not self.user_has_groups("my_library.acl_book_librarian"):
+        if self.user_has_groups("my_library.acl_book_librarian"):
             if "manager_remarks" in values:
                 raise UserError(
                     "You are not allowed to modify "

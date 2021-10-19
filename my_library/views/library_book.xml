@@ -38,6 +38,8 @@
                     <group>
                         <field name="category_id"/>
                         <field name="date_release"/>
+                        <field name="old_edition" />
+                        <field name="isbn" />
                     </group>
                 </group>
             </form>
