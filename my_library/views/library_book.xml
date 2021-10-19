@@ -27,6 +27,7 @@
                     <button name="filter_books" string="Filter Book " type="object"/>
                     <button name="mapped_books" string="Mapped authors " type="object"/>
                     <button name="sort_books" string="Sort Books " type="object"/>
+                    <button name="groupped_data" string="Grouped Data" type="object" />
                     <field name="state" widget="statusbar"/>
                 </header>
                 <group>
@@ -34,6 +35,7 @@
                         <field name="name"/>
                         <field name="author_ids" widget="many2many_tags"/>
                         <field name="manager_remarks"   />
+                        <field name="cost_price" />
                     </group>
                     <group>
                         <field name="category_id"/>

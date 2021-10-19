@@ -30,6 +30,25 @@ class LibraryBook(models.Model):
 
     old_edition = fields.Many2one("library.book", string="Ole Edition")
 
+    pages = fields.Integer("Number Of Pages")
+
+    cost_price = fields.Float("Book Cost")
+
+
+    @api.model
+    def _get_average_cost(self):
+        gruoped_result = self.read_group(
+            [("cost_price", "!=", False)], #Domain
+            ["category_id", "cost_price:avg"], #Fields to access
+            ["category_id"] #group_by
+        )
+        return gruoped_result
+
+    def groupped_data(self):
+        data = self._get_average_cost()
+        logger.info("Grouped Data %s" % data)
+        print(data)
+
     def name_get(self):
         result = []
         for book in self:
