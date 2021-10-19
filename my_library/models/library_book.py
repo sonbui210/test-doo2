@@ -55,6 +55,19 @@ class LibraryBook(models.Model):
                                    context={},
                                    domain=[],)
 
+    @api.model
+    def _update_book_price(self):
+        logger.info("Method update_book_price called from XML*****************************************************************************************************************************************************")
+        all_books = self.search([])
+        for book in all_books:
+            book.cost_price +=100
+
+    # @api.model
+    # def update_book_price(self, category, amount_to_increase):
+    #     logger.info("Method update_book_price called from XML*****************************************************************************************************************************************************")
+    #     category_books = self.search([("category_id","=", category.id)])
+    #     for book in category_books:
+    #         book.cost_price += amount_to_increase
 
     @api.model
     def _get_average_cost(self):

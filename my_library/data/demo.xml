@@ -21,4 +21,6 @@
                                 ref('author_hb')])]" />
         <field name="publisher_id" ref="res_partner_packt" />
     </record>
+        <function model="library.book" name="_update_book_price"/>
+<!--    <function model="library.book" name="update_book_price" eval="(ref("category_xml_id"), 20)" />-->
 </odoo>
