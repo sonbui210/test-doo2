@@ -238,6 +238,27 @@ class LibraryBook(models.Model):
             "book_id": self.id,
             "borrower_id": self.env.user.partner_id.id,
         })
+        return True
+
+    def average_book_occupation(self):
+        self.flush()
+        sql_query = """
+            SELECT
+                lb.name,
+                avg((EXTRACT(epoch from age(return_date, rent_date)) / 86400))::int
+            FROM
+                library_book_rent AS lbr
+            JOIN
+                library_book as lb ON lb.id = lbr.book_id
+            WHERE lbr.state = 'returned'
+            GROUP BY lb.name;"""
+
+        self.env.cr.execute(sql_query)
+
+        result = self.env.cr.fetchall()
+        logger.info("Average book occupation: %s", result)
+        print(result)
+
 
 
 class LibraryMember(models.Model):

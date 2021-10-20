@@ -17,6 +17,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="average_book_occupation" string="Log average Occ" type="object" />
                     <button name="book_rent" string="Rent this book" type="object" class="btn-primary" />
                     <button name="make_available" string="Make Available" type="object"/>
                     <button name="make_borrowed"  string="Make Borrowed" type="object"/>
