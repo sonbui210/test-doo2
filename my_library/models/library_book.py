@@ -126,7 +126,10 @@ class LibraryBook(models.Model):
         self.change_state('borrowed')
 
     def make_lost(self):
+        self.ensure_one()
         self.change_state('lost')
+        if not self.env.context.get("avoid_deactivate"):
+            self.active=False
 
     def log_all_library_members(self):
         library_member_model = self.env['library.member']  # This is an empty recordset of model library.member
