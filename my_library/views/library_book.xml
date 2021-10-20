@@ -60,6 +60,11 @@
         </field>
     </record>
 
+
+<!--    <record id="library_rent_wizard_form" model="ir.ui.view" >-->
+
+<!--    </record>-->
+
     <!-- Tree(list) View -->
     <record id="library_book_view_tree" model="ir.ui.view">
         <field name="name">Library Book List</field>
