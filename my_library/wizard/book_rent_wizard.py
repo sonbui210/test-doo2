@@ -20,3 +20,5 @@ class LibraryRentWizard(models.TransientModel):
             action['domain'] = [('id', 'in', tuple(borrowers.ids))]
             action['view_mode'] = 'tree,form'
         return action
+
+
