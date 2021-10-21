@@ -1,58 +1,87 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id='library_return_wizard_form' model='ir.ui.view'>
+    <field name='name'>library return wizard form view</field>
+    <field name='model'>library.return.wizard</field>
+    <field name='arch' type='xml'>
+        <form string="Return books">
+            <sheet>
+                <group>
+                    <field name='borrower_id'/>
+                </group>
+                <group>
+                    <field name='book_ids'/>
+                </group>
+            </sheet>
+            <footer>
+                <button string='Return Books' name='books_returns' class='btn-primary' type='object'/>
+                <button string='Cancel' class='btn-default' special='cancel'/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+<act_window id="action_wizard_return_books" name="Return Books" res_model="library.return.wizard" view_mode="form" target="new" />
+<menuitem id="menu_wizard_return_books" parent="library_base_menu" action="action_wizard_return_books" sequence="20" />
+
+</odoo>
+
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+
+<!--&lt;!&ndash;<odoo>&ndash;&gt;-->
+<!--&lt;!&ndash;    <record id='library_return_wizard_form' model='ir.ui.view'>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="name">Library return wizard form view</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="model">library.return.wizard</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="arch" type="xml">&ndash;&gt;-->
+<!--&lt;!&ndash;            <form string="Return books">&ndash;&gt;-->
+<!--&lt;!&ndash;                <sheet>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <group>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="borrower_id"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </group>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <group>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="book_ids"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </group>&ndash;&gt;-->
+<!--&lt;!&ndash;                </sheet>&ndash;&gt;-->
+<!--&lt;!&ndash;                <footer>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button string="Return Books" name="books_returns" class="btn-primary" type="object"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button string="Cancel" class="btn-default" special="cancel"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                </footer>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--&lt;!&ndash;        </field>&ndash;&gt;-->
+<!--&lt;!&ndash;    </record>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <act_window id="action_wizard_return_books" name="Return books" res_model="library.return.wizard" view_mode="form" targer="new" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <menuitem id="menu_wizard_return_books" parent="library_base_menu" action="action_wizard_return_books" sequence="20" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;</odoo>&ndash;&gt;-->
+
+
 
 <!--<odoo>-->
+
 <!--    <record id='library_return_wizard_form' model='ir.ui.view'>-->
-<!--        <field name="name">Library return wizard form view</field>-->
-<!--        <field name="model">library.return.wizard</field>-->
-<!--        <field name="arch" type="xml">-->
+<!--        <field name='name'>library return wizard form view</field>-->
+<!--        <field name='model'>library.return.wizard</field>-->
+<!--        <field name='arch' type='xml'>-->
 <!--            <form string="Return books">-->
 <!--                <sheet>-->
 <!--                    <group>-->
-<!--                        <field name="borrower_id"/>-->
+<!--                        <field name='borrower_id'/>-->
 <!--                    </group>-->
 <!--                    <group>-->
-<!--                        <field name="book_ids"/>-->
+<!--                        <field name='book_ids'/>-->
 <!--                    </group>-->
 <!--                </sheet>-->
 <!--                <footer>-->
-<!--                    <button string="Return Books" name="books_returns" class="btn-primary" type="object"/>-->
-<!--                    <button string="Cancel" class="btn-default" special="cancel"/>-->
+<!--                    <button string='Return Books' name='books_returns' class='btn-primary' type='object'/>-->
+<!--                    <button string='Cancel' class='btn-default' special='cancel'/>-->
 <!--                </footer>-->
 <!--            </form>-->
 <!--        </field>-->
 <!--    </record>-->
 
-<!--    <act_window id="action_wizard_return_books" name="Return books" res_model="library.return.wizard" view_mode="form" targer="new" />-->
+<!--    <act_window id="action_wizard_return_books" name="Return Books" res_model="library.return.wizard" view_mode="form" target="new" />-->
 <!--    <menuitem id="menu_wizard_return_books" parent="library_base_menu" action="action_wizard_return_books" sequence="20" />-->
 
 <!--</odoo>-->
-
-
-
-<odoo>
-
-    <record id='library_return_wizard_form' model='ir.ui.view'>
-        <field name='name'>library return wizard form view</field>
-        <field name='model'>library.return.wizard</field>
-        <field name='arch' type='xml'>
-            <form string="Return books">
-                <sheet>
-                    <group>
-                        <field name='borrower_id'/>
-                    </group>
-                    <group>
-                        <field name='book_ids'/>
-                    </group>
-                </sheet>
-                <footer>
-                    <button string='Return Books' name='books_returns' class='btn-primary' type='object'/>
-                    <button string='Cancel' class='btn-default' special='cancel'/>
-                </footer>
-            </form>
-        </field>
-    </record>
-
-    <act_window id="action_wizard_return_books" name="Return Books" res_model="library.return.wizard" view_mode="form" target="new" />
-    <menuitem id="menu_wizard_return_books" parent="library_base_menu" action="action_wizard_return_books" sequence="20" />
-
-</odoo>
