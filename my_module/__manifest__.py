@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "my_library",
+    'name': "my_module",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -16,30 +16,20 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Tools',
-    'version': '14.0.1',
+    'category': 'Uncategorized',
+    'version': '0.1',
 
     # any module necessary for this one to work correctly
     'depends': ['base'],
 
     # always loaded
     'data': [
-        'security/groups.xml',
-        'security/ir.model.access.csv',
-        'views/library_book.xml',
-        'views/library_book_categ.xml',
+        # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        # 'data/data.xml',
-        # "data/demo.xml",
-        'views/library_book_rent.xml',
-        "wizard/library_book_rent_wizard.xml",
-        "wizard/library_book_return_wizard.xml",
-        "views/library_book_statistics.xml",
-        "views/res_config_settings_views.xml",
-
+        'views/my_contacts.xml',
+        'security/groups.xml',
     ],
-    'post_init_hook': 'add_book_hook',
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
